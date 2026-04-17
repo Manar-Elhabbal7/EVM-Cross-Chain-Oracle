@@ -14,14 +14,28 @@ The system consists of:
 ## Project Structure
 
 ```text
-├── api                 # Oracle service (Node.js)
-│   ├── oracle.js       # Core oracle logic
-│   └── .env.example    # Environment variable template
-├── evm                 # Smart contracts & Hardhat environment
-│   ├── contracts       # Solidity source code
-│   └── scripts         # Deployment and interaction scripts
-├── test-sync.sh        # Integration test script
-└── README.md           # Project documentation
+evm-cross-chain-oracle/
+├── api/                   # Oracle Service (Node.js)
+│   ├── oracle.js          # Core logic: Event listening & cross-chain relay
+│   ├── .env               # Environment variables (RPCs, Keys, Addresses)
+│   ├── .env.example       # Template for environment configuration
+│   └── package.json       # Node.js dependencies (ethers, dotenv)
+│
+├── evm/                   # Smart Contracts & Development Environment
+│   ├── contracts/
+│   │   └── Storage.sol    # Smart contract with event-driven architecture
+│   │
+│   ├── scripts/
+│   │   ├── deploy.js      # Automation for multi-chain deployment
+│   │   ├── update-value.js # Trigger for testing Chain A events
+│   │   └── verify.js      # Verification for Chain B state sync
+│   │
+│   ├── hardhat.config.cjs # Multi-network configuration
+│   └── package.json       # EVM dependencies (hardhat, ethers)
+│
+├── .gitignore             # Excludes node_modules, .env, and build artifacts
+├── README.md              # Project documentation & setup guide
+└── test-sync.sh           # Fully automated end-to-end integration test
 ```
 
 ## Prerequisites
@@ -126,5 +140,7 @@ ADDRESS_A=<CONTRACT_ADDRESS> npx hardhat run scripts/update-value.js --network c
   * start with this : https://cryptozombies.io/en/solidity
 
 
-  See this demo ./demo.webm
+## Demo :
+[demo.webm](https://github.com/user-attachments/assets/67ed15ba-b693-414d-bb69-9f07ee302db6)
+
   
