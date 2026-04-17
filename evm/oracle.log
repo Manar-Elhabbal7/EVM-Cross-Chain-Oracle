@@ -1,0 +1,13 @@
+◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+Oracle started...
+Listening on Chain A: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Syncing to Chain B: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Starting sync from block: 1
+
+[Event Detected on Chain A]
+Old Value: 0
+New Value: 12
+Transaction Hash: 0x527606e9eb160c53e143425b8a0b848e4c34217f70784112179f63f4a37796b9
+Propagating change to Chain B...
+Transaction sent: 0x4eaa96e4d45be2024c98c75340fbc9cffe35214464263467d9a8c8e51274c144
+Successfully synced to Chain B in block 2
