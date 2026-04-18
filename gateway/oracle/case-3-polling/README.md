@@ -8,6 +8,7 @@ This scenario demonstrates synchronization using a periodic polling mechanism in
 3.  **State Sync**: If a difference is detected, it propagates the new value to Chain B.
 
 ### How to run:
+
 ```bash
-./run.sh
+./run-all.sh --case 3
 ```

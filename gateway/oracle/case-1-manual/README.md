@@ -8,6 +8,7 @@ In this scenario, the user manually triggers the synchronization between Chain A
 3.  **Read & Write**: The script reads the state from Chain A and sends a transaction to Chain B to match the state.
 
 ### How to run:
+
 ```bash
-./run.sh
+./run-all.sh --case 1
 ```

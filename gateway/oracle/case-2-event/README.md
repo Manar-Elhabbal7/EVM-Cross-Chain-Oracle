@@ -8,6 +8,7 @@ This scenario demonstrates real-time synchronization using blockchain events.
 3.  **Real-Time Sync**: The oracle detects the event immediately and propagates the change to Chain B.
 
 ### How to run:
+
 ```bash
-./run.sh
+./run-all.sh --case 2
 ```

@@ -44,25 +44,50 @@ mark_done() {
 
 check_all_done() {
     if [ $(grep -c "=done" "$STATE_FILE") -eq 4 ]; then
-        echo "===================================================="
-        echo "🎉 ALL SCENARIOS COMPLETED SUCCESSFULLY!"
-        echo "===================================================="
-        echo "  __  __   _   ___ _____ ___ ___ "
-        echo " |  \/  | /_\ / __|_   _| __| _ \\"
-        echo " | |\/| |/ _ \\\\__ \ | | | _||   /"
-        echo " |_|  |_/_/ \_\___/ |_| |___|_|_\\"
-        echo ""
-        echo "       🎉 YOU ARE NOW A BLOCKCHAIN MASTER 🎉"
-        echo "===================================================="
-        # Optional: clear state after completion
-        # > $STATE_FILE
-    fi
+    # Colors
+    BOLD='\033[1m'
+    GREEN='\033[0;32m'
+    CYAN='\033[0;36m'
+    YELLOW='\033[1;33m'
+    MAGENTA='\033[0;35m'
+    RESET='\033[0m'
+
+    echo ""
+    echo -e "${CYAN}${BOLD}╔══════════════════════════════════════════════════════════╗${RESET}"
+    echo -e "${CYAN}${BOLD}║                                                          ║${RESET}"
+    echo -e "${CYAN}${BOLD}║   ██████╗  ██████╗ ███╗   ██╗███████╗██╗                 ║${RESET}"
+    echo -e "${CYAN}${BOLD}║   ██╔══██╗██╔═══██╗████╗  ██║██╔════╝██║                 ║${RESET}"
+    echo -e "${CYAN}${BOLD}║   ██║  ██║██║   ██║██╔██╗ ██║█████╗  ██║                 ║${RESET}"
+    echo -e "${CYAN}${BOLD}║   ██║  ██║██║   ██║██║╚██╗██║██╔══╝  ╚═╝                 ║${RESET}"
+    echo -e "${CYAN}${BOLD}║   ██████╔╝╚██████╔╝██║ ╚████║███████╗██╗                 ║${RESET}"
+    echo -e "${CYAN}${BOLD}║   ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝                 ║${RESET}"
+    echo -e "${CYAN}${BOLD}║                                                          ║${RESET}"
+    echo -e "${CYAN}${BOLD}╚══════════════════════════════════════════════════════════╝${RESET}"
+    echo ""
+    echo -e "${YELLOW}${BOLD}  🎉  ALL 4 SCENARIOS COMPLETED SUCCESSFULLY!  🎉${RESET}"
+    echo ""
+    echo -e "${MAGENTA}${BOLD}  ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ ${RESET}"
+    echo -e "${MAGENTA}${BOLD}  ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗${RESET}"
+    echo -e "${MAGENTA}${BOLD}  ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝${RESET}"
+    echo -e "${MAGENTA}${BOLD}  ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗${RESET}"
+    echo -e "${MAGENTA}${BOLD}  ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║${RESET}"
+    echo -e "${MAGENTA}${BOLD}  ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝${RESET}"
+    echo ""
+    echo -e "${GREEN}${BOLD}  ┌─────────────────────────────────────────────────────┐${RESET}"
+    echo -e "${GREEN}${BOLD}  │  ⛓  You are now a Blockchain Master!  ⛓             │${RESET}"
+    echo -e "${GREEN}${BOLD}  │                                                     │${RESET}"
+    echo -e "${GREEN}${BOLD}  │  ✔  Scenario 1 .............. Complete              │${RESET}"
+    echo -e "${GREEN}${BOLD}  │  ✔  Scenario 2 .............. Complete              │${RESET}"
+    echo -e "${GREEN}${BOLD}  │  ✔  Scenario 3 .............. Complete              │${RESET}"
+    echo -e "${GREEN}${BOLD}  │  ✔  Scenario 4 .............. Complete              │${RESET}"
+    echo -e "${GREEN}${BOLD}  └─────────────────────────────────────────────────────┘${RESET}"
+    echo ""
+fi
 }
 
 PROJECT_ROOT=$(pwd)
 
 setup_env() {
-    # Start nodes if not running
     if ! lsof -i:8545 >/dev/null; then
         echo "Starting nodes..."
         cd "$PROJECT_ROOT/evm"
@@ -70,6 +95,8 @@ setup_env() {
         PID_A=$!
         npx hardhat node --port 8546 > /dev/null 2>&1 &
         PID_B=$!
+        npx hardhat node --port 8547 > /dev/null 2>&1 &
+        PID_C=$!
         sleep 5
     fi
 
@@ -77,12 +104,13 @@ setup_env() {
     cd "$PROJECT_ROOT/evm"
     export ADDRESS_A=$(npx hardhat run scripts/deploy.js --network chainA | grep "Storage deployed to:" | awk '{print $4}')
     export ADDRESS_B=$(npx hardhat run scripts/deploy.js --network chainB | grep "Storage deployed to:" | awk '{print $4}')
+    export ADDRESS_C=$(npx hardhat run scripts/deploy.js --network chainC | grep "Storage deployed to:" | awk '{print $4}')
     export PRIVATE_KEY="0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80"
     export RPC_A="http://127.0.0.1:8545"
     export RPC_B="http://127.0.0.1:8546"
+    export RPC_C="http://127.0.0.1:8547"
     cd "$PROJECT_ROOT"
-}
-
+    }
 run_case() {
     local case_num=$1
     local case_name=$2
@@ -95,7 +123,6 @@ run_case() {
     draw_progress_bar 2
     
     chmod +x "$case_path"
-    # Run in a subshell to isolate directory changes
     (cd "$case_dir" && ./"$script_name")
     
     mark_done $case_num

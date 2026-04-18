@@ -1,5 +1,5 @@
 [Polling Oracle] Initial value on Chain A: 0. Polling every 3s...
 
-🔍 Change detected by polling: 0 -> 16
+🔍 Change detected by polling: 0 -> 1
 Propagating to Chain B...
-✅ Successfully synced: 0x9c68f9b398d4fd7d0a432ff0634cf148e9051c7b7e727cf048b3170cfa26cabd
+✅ Successfully synced: 0x117fb9d3646716a884a8ad1730a4be58ef157ad9a0572e2c3ede96ef3bc460ce

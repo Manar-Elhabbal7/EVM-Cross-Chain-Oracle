@@ -5,12 +5,12 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$( cd "$SCRIPT_DIR/../../../" && pwd )"
 
 echo "----------------------------------------------------"
-echo "🛠️  CASE 1: MANUAL SYNC"
+echo "Case 1: Manual Sync"
 echo "Description: Manually trigger state propagation."
 echo "----------------------------------------------------"
 
 if [ -z "$ADDRESS_A" ] || [ -z "$ADDRESS_B" ]; then
-    echo "❌ Error: ADDRESS_A and ADDRESS_B must be set."
+    echo "Error: ADDRESS_A and ADDRESS_B must be set."
     exit 1
 fi
 

@@ -10,5 +10,8 @@ module.exports = {
     chainB: {
       url: "http://127.0.0.1:8546",
     },
+    chainC: {
+      url: "http://127.0.0.1:8547",
+    },
   },
 };

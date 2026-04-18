@@ -4,7 +4,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$( cd "$SCRIPT_DIR/../../../" && pwd )"
 
 echo "----------------------------------------------------"
-echo "⚡ CASE 2: EVENT-DRIVEN SYNC"
+echo "Case 2: Event-Driven Sync"
 echo "Description: Real-time synchronization using events."
 echo "----------------------------------------------------"
 
@@ -27,6 +27,6 @@ echo "Step 3: Verifying on Chain B..."
 cd "$PROJECT_ROOT/evm"
 ADDRESS_B=$ADDRESS_B npx hardhat run scripts/verify.js --network chainB
 
-# Cleanup
+# clean up oracle process
 kill $ORACLE_PID
 echo "Oracle stopped."
