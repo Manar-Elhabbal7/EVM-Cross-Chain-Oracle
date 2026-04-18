@@ -84,3 +84,15 @@ Clear the completion state if you want to restart the demo from scratch:
 This project is an educational demo for me and others to explore blockchain interoperability, oracle systems, and cross-chain state synchronization in EVM networks.
 
 It is inspired by `Hyperledger Cacti` and `cacti-demos` Repo .
+
+---
+
+## Resources to study from :
+### I highly recommond this website to study everything about blockchain from :
+https://cryptozombies.io/en/course/
+
+---
+# Demo Video
+
+[demo-oracle.webm](https://github.com/user-attachments/assets/c93163aa-5834-416e-b6f2-28d81f90467f)
+
