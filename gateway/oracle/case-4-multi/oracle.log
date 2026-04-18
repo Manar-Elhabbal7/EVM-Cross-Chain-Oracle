@@ -1,0 +1,9 @@
+[Multi-Sync Oracle] Listening on Chain A: 0xc6e7DF5E7b4f2A278906862b61205850344D4e7d...
+[Multi-Sync Oracle] Propagating to Destination 1: 0x59b670e9fA9D0A427751Af201D676719a970857b
+[Multi-Sync Oracle] Propagating to Destination 2: 0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1
+
+🌐 Multi-sync trigger: 0 -> 48
+Propagating to Destination 1...
+✅ Synced to Destination 1: 0x30b2317f0f03897c38c9cca7832b2904f4e6cae2993f5420135b5e5b52ef65d0
+Propagating to Destination 2...
+❌ Multi-sync failed: nonce has already been used (transaction="0x02f890827a6917843b9aca00844133ff2e82b0fd944ed7c70f96b99c776995fb64377f0d4ab3b0e1c180a4552410770000000000000000000000000000000000000000000000000000000000000030c001a039685df0c1e87f23ee7fab77f01268d6a0882b1e8ff73c25ed793aac31e05362a07b3b0ce3f6194b190ba1e901afbbf7a105cab4c8f6e1730c658694624e2dd8ce", info={ "error": { "code": -32000, "data": { "data": null, "message": "Nonce too low. Expected nonce to be 24 but got 23. Note that transactions can't be queued when automining." }, "message": "Nonce too low. Expected nonce to be 24 but got 23. Note that transactions can't be queued when automining." } }, code=NONCE_EXPIRED, version=6.16.0)

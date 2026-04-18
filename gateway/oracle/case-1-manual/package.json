@@ -1,0 +1,9 @@
+{
+  "name": "case-1-manual",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "ethers": "^6.13.2",
+    "dotenv": "^16.4.5"
+  }
+}
